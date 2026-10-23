@@ -1,0 +1,41 @@
+# DETEKTO :: Phase 1 :: Master Docker Compose
+# Semua port di-bind ke 127.0.0.1 (hanya mesin lokal). Redis tanpa persistensi (Zero-Bloat Vault).
+name: detekto
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: detekto-redis
+    restart: unless-stopped
+    # --save "" + appendonly no => nol byte data (termasuk Base64 gambar) menyentuh disk.
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "512mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: detekto-searxng
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+      - SEARXNG_SECRET=${SEARXNG_SECRET:-detekto-local-dev-secret-change-me}
+    volumes:
+      - ./searxng:/etc/searxng
+
+  memgraph:
+    image: memgraph/memgraph-platform:latest
+    container_name: detekto-memgraph
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7687:7687"   # Bolt
+      - "127.0.0.1:7444:7444"   # Log stream
+      - "127.0.0.1:3001:3000"   # Memgraph Lab (3000 dipakai Next.js)
+    environment:
+      - MEMGRAPH=--log-level=WARNING --also-log-to-stderr

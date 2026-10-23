@@ -1,0 +1,21 @@
+# DETEKTO :: SearxNG (Ground Truth RAG & OSINT Dorking)
+use_default_settings: true
+
+general:
+  instance_name: "DETEKTO-SEARX"
+  debug: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  formats:
+    - html
+    - json
+
+server:
+  # Di-override oleh env SEARXNG_SECRET dari docker-compose.
+  secret_key: "detekto-local-dev-secret-change-me"
+  limiter: false
+  image_proxy: false
+  bind_address: "0.0.0.0"
+  port: 8080

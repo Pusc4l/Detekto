@@ -1,0 +1,8 @@
+{
+    "pids":  {
+                 "frontend":  16932,
+                 "backend":  14600
+             },
+    "started":  "2026-10-23T07:55:59",
+    "docker":  true
+}

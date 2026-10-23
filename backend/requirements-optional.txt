@@ -1,0 +1,5 @@
+# OCR cadangan (pure Python, tanpa binary Tesseract). Berat (PyTorch ~ 1-2 GB) — pasang hanya bila Tesseract tidak bisa diinstal.
+easyocr>=1.7
+
+# CLIP untuk keseragaman feed (Task 4.4). Tanpa ini, sistem otomatis memakai Perceptual Hash (dHash).
+# sentence-transformers>=3.0

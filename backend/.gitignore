@@ -1,0 +1,68 @@
+# ----------------------------------------------------------------------
+# 🚫 SECRETS & CREDENTIALS (SANGAT BERBAHAYA JIKA BOCOR)
+# ----------------------------------------------------------------------
+.env
+backend/.env
+*.env
+*.env.local
+*.env.development
+*.env.production
+
+# ----------------------------------------------------------------------
+# 💾 DATABASE LOKAL & STATE ML (MELINDUNGI PRIVASI INVESTIGASI USER)
+# ----------------------------------------------------------------------
+backend/detekto_hive.db
+backend/ml_snapshot.joblib
+*.sqlite
+*.sqlite3
+*.db
+
+# ----------------------------------------------------------------------
+# 📦 DEPENDENCIES & VIRTUAL ENVIRONMENT (UKURAN RAKSASA/BERAT)
+# ----------------------------------------------------------------------
+backend/.venv/
+.venv/
+env/
+venv/
+frontend/node_modules/
+node_modules/
+
+# ----------------------------------------------------------------------
+# ⚙️ CACHE & COMPILED FILES (SAMPAH BUILD SISTEM)
+# ----------------------------------------------------------------------
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+frontend/.next/
+frontend/.swc/
+src-tauri/target/
+
+# ----------------------------------------------------------------------
+# 📂 BACKUP & FOLDER SALAH KETIK
+# ----------------------------------------------------------------------
+backup/
+{searxng,backend/
+{searxng,backend}/
+
+# ----------------------------------------------------------------------
+# 📝 LOGS & RUNTIME FILES (FILE SEMENTARA SAAT MESIN NYALA)
+# ----------------------------------------------------------------------
+.detekto-pids.json
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------------------------------------------------------
+# 🖥️ OS GENERATED FILES (SAMPAH BAWAAN OS WINDOWS/MAC)
+# ----------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

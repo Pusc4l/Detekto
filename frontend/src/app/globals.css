@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #f4f0ea;
+  }
+  body {
+    @apply bg-canvas text-ink font-mono antialiased;
+    min-height: 100vh;
+  }
+  ::selection {
+    background: #000000;
+    color: #ffe600;
+  }
+  /* Scrollbar mekanis: kotak, tebal, tanpa lengkung */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f4f0ea;
+    border-left: 4px solid #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ffe600;
+    border: 4px solid #000000;
+  }
+  :focus-visible {
+    outline: 4px solid #ff007a;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .hazard-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #ffe600 0,
+      #ffe600 12px,
+      #000000 12px,
+      #000000 24px
+    );
+    background-size: 34px 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-stripes {
+    animation: none;
+  }
+}
